@@ -23,10 +23,19 @@ class Timer {
       const currentTime = Date.now();
       const deltaTime = this.targetDate - currentTime;
       const { days, hours, mins, secs } = this.getTimeComponents(deltaTime);
-      refs.days.textContent = `${days}`;
-      refs.hours.textContent = `${hours}`;
-      refs.mins.textContent = `${mins}`;
-      refs.secs.textContent = `${secs}`;
+
+      if (deltaTime >= 0) {
+        refs.days.textContent = `${days}`;
+        refs.hours.textContent = `${hours}`;
+        refs.mins.textContent = `${mins}`;
+        refs.secs.textContent = `${secs}`;
+      } else {
+        clearInterval(this.intervalId);
+        refs.days.textContent = `00`;
+        refs.hours.textContent = `00`;
+        refs.mins.textContent = `00`;
+        refs.secs.textContent = `00`;
+      }
     }, 1000);
   }
   pad(value) {
@@ -43,6 +52,6 @@ class Timer {
 }
 const timer = new Timer({
   selector: '#timer-1',
-  targetDate: new Date('Aug 30, 2021'),
+  targetDate: new Date('Aug 5, 2021, 1:25:30 PM'),
 });
 timer.start();
