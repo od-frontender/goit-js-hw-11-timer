@@ -52,6 +52,6 @@ class Timer {
 }
 const timer = new Timer({
   selector: '#timer-1',
-  targetDate: new Date('Aug 5, 2021, 1:25:30 PM'),
+  targetDate: new Date('Aug 10, 2021, 1:25:30 PM'),
 });
 timer.start();
